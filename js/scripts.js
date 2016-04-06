@@ -21,29 +21,38 @@ $(document).ready(function(){
   // Submit listener on form
   $('form#sign-up').submit(function(event){
     event.preventDefault();
-    // Both player objects via Player constructor
-    $(".new-player-input").each(function() {
-      inputtedPlayerNames.push($(this).find("input#player-name").val());
+    // player1 object via Player constructor
+    // $(".new-player1-input").each(function() {
+      inputtedPlayerNames.push($(this).find("input#player1-name").val());
       console.log(inputtedPlayerNames[1]);
-      // Assign X or Y value to each player
-    for (var i=0; i<2; i++) {
+      // Assign X to first value in inputtedPlayerNames array
+      for (var i=0; i<1; i++) {
 
         if (i===0) {
           var player1 = new Player(inputtedPlayerNames[0], "X");
         }
-        else if (i===1) {
-          var player2 = new Player(inputtedPlayerNames[2], "O");
+        else{
+          console.log("break");
+        }
+        console.log(player1);
+      }
+    // });
+
+    // $(".new-player2-input").each(function() {
+      inputtedPlayerNames.push($(this).find("input#player2-name").val());
+      console.log(inputtedPlayerNames[2]);
+      // Assign O to second value in inputtedPlayerNames array
+      for (var i=1; i<2; i++) {
+
+        if (i===1) {
+          var player2 = new Player(inputtedPlayerNames[1], "O");
         }
         else{
           console.log("break");
         }
-        debugger;
-        console.log(player1);
-        // return player1;
-        // return player2;
+        console.log(player2);
       }
-    });
-
+    // });
   });
 
   // Click event listner on td, prevent default
