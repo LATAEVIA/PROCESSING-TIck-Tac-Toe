@@ -1,0 +1,12 @@
+#winning-statement {
+  display: none;
+}
+/*.form-control {
+  width: 50%;
+}*/
+.table-data-hover > tbody > tr > td:hover {
+  background-color: #f5f5f5;
+}
+h1, h2, h3 {
+  text-align: center;
+}
