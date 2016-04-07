@@ -298,3 +298,72 @@ $(document).ready(function() {
     newGame.switchPlayer();
   });
  });
+ boxes.each(function(i){
+     if( i >= 3 ) {
+         var prevBox = boxes.eq( i - 3 );
+         var pos = prevBox.position();
+         var top = pos.top;
+     }
+
+
+
+
+
+     ==============================
+
+clickedSpacesCombo([spaces], 3);
+function clickedSpacesCombo(set, k) {
+	var i, j, combos, head, smallCombos;
+
+	// There is no way to take e.g. sets of 5 elements from
+	// a set of 4.
+	if (k > set.length || k <= 0) {
+		return [];
+	}
+
+	// K-sized set has only one K-sized subset.
+	if (k == set.length) {
+		return [set];
+	}
+
+	// There is N 1-sized subsets in a N-sized set.
+	if (k == 1) {
+		combos = [];
+		for (i = 0; i < set.length; i++) {
+			combos.push([set[i]]);
+		}
+		return combos;
+	}
+
+	combos = [];
+	for (i = 0; i < set.length - k + 1; i++) {
+		// head is a list that includes only our current element.
+		head = set.slice(i, i + 1);
+		// We take smaller combinations from the subsequent elements
+		smallCombos = clickedSpacesCombo(set.slice(i + 1), k - 1);
+		// For each (k-1)-combination we join it with the current
+		// and store it to the set of k-combinations.
+		for (j = 0; j < smallCombos.length; j++) {
+			combos.push(head.concat(smallCombos[j]));
+		}
+	}
+	return combos;
+}
+=================================
+// Player.prototype.winner = function () {
+//   if ((spaceIdNum[1]+[3]+[5])===7) {
+//     console.log("winner");
+//   } else {
+//     console.log("fixMe");
+//   }
+// }
+
+// scrap code
+// function TicTacToe() {
+//   this.board = new TicTacToeBoard();
+// }
+// TicTacToe.prototype.new = function() {
+//   this.board = new TicTacToeBoard();
+// };
+// var board = [ 1, 2, 4, 8, 16, 32, 64, 128, 256 ];
+// var winningCombos = [7, 56, 448, 73, 146, 292, 273, 84]
