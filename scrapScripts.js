@@ -257,3 +257,44 @@ $( document ).ready( function() {
     tictactoe.play( $(this) );
   });
 });
+
+=========================================
+
+
+
+
+//business logic//
+function Player (mark) {
+  this.mark = mark;
+  this.spaces = [];
+}
+
+function Game(playerOne, playerTwo) {
+  this.playerOne = playerOne;
+  this.playerTwo = playerTwo;
+  this.currentPlayer = playerOne;
+}
+
+Game.prototype.switchPlayer = function () {
+  if (this.currentPlayer === this.playerOne) {
+    this.currentPlayer = this.playerTwo;
+  } else {
+    this.currentPlayer = this.playerOne;
+  }
+}
+
+
+//user interface logic//
+$(document).ready(function() {
+  var playerOne = new Player("X"); //instantiate new instance of Player object
+  var playerTwo = new Player("O");
+
+  var newGame = new Game(playerOne, playerTwo);
+  $("#gameBoard td").click(function(event) {
+    var spaceId = $(this).attr('id');
+    newGame.currentPlayer.spaces.push(spaceId);
+    console.log(newGame.currentPlayer);
+    console.log(newGame.currentPlayer.spaces);
+    newGame.switchPlayer();
+  });
+ });
