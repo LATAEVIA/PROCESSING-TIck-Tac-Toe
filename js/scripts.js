@@ -1,17 +1,22 @@
 // Business Logic
 var inputtedPlayerNames = []
 
-function Player(playerName, playerLetter, playerMark){
+function Player(playerName, playerLetter){
 this.playerName = playerName;
 this.playerLetter = playerLetter;
-this.playerMarks = playerMarks;
 }
 
-Player.prototype.switchPlayerTurn = function () {
-  if (this.playerLetter === "X") {
-    this.playerLetter = "O";
+function Game(playerOne, playerTwo) {
+  this.playerOne = playerOne;
+  this.playerTwo = playerTwo;
+  this.playerTurn = playerOne;
+}
+
+Game.prototype.switchPlayerTurn = function () {
+  if (this.playerTurn === this.playerOne) {
+    this.playerTurn = this.playerTwo;
   } else {
-    this.playerLetter = "X";
+    this.playerTurn = this.playerOne;
   }
 }
 
@@ -39,7 +44,7 @@ $(document).ready(function(){
     // Assign X to first value in inputtedPlayerNames array
     for (var i=0; i<1; i++) {
       if (i===0) {
-        var player1 = new Player(inputtedPlayerNames[0], "X", []);
+        var player1 = new Player(inputtedPlayerNames[0], "X");
       } else {
         console.log("break");
       }
@@ -51,9 +56,8 @@ $(document).ready(function(){
 
     // Assign O to second value in inputtedPlayerNames array
     for (var i=1; i<2; i++) {
-
       if (i===1) {
-        var player2 = new Player(inputtedPlayerNames[1], "O", []);
+        var player2 = new Player(inputtedPlayerNames[1], "O");
       } else {
         console.log("break");
       }
@@ -66,10 +70,10 @@ $(document).ready(function(){
     event.preventDefault();
     console.log("clicked");
 
-    var spaceIdNum = $(this).attr('id');
+    var spaceIdNum = parseInt[$(this).attr('id')];
     console.log(spaceIdNum);
     player1.playerLetter.push(spaceIdNum[1,3,5,7,9])
-    player1.playerLetter.push(spaceIdNum[2,4,6,8])
+    player2.playerLetter.push(spaceIdNum[2,4,6,8])
     // newGame.currentPlayer.spaces.push(spaceId);
     // console.log(newGame.currentPlayer);
     // console.log(newGame.currentPlayer.spaces);
