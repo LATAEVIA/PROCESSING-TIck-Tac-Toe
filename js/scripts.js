@@ -34,6 +34,9 @@ Game.prototype.switchPlayerTurn = function () {
 // User Interface Logic
 $(document).ready(function(){
 
+  var spaceIdNum = [];
+
+
   // Submit listener on form
   $('form#sign-up').submit(function(event){
     event.preventDefault();
@@ -63,21 +66,21 @@ $(document).ready(function(){
       }
       console.log(player2);
     }
+    // Start new game
+    var newGame = new Game(player1, player2);
+
+
+
+    // Click event listner on td, prevent default
+    $('td').click(function(event){
+      event.preventDefault();
+      console.log("clicked");
+      spaceIdNum.push(parseInt($(this).attr('id')));
+      console.log(spaceIdNum);
+      newGame.switchPlayerTurn();
+      console.log(newGame.playerTurn);
+      // console.log(newGame.currentPlayer.spaces);
+      // newGame.switchPlayer();
+    });
   });
-
-  // Click event listner on td, prevent default
-  $('td').click(function(event){
-    event.preventDefault();
-    console.log("clicked");
-
-    var spaceIdNum = parseInt[$(this).attr('id')];
-    console.log(spaceIdNum);
-    player1.playerLetter.push(spaceIdNum[1,3,5,7,9])
-    player2.playerLetter.push(spaceIdNum[2,4,6,8])
-    // newGame.currentPlayer.spaces.push(spaceId);
-    // console.log(newGame.currentPlayer);
-    // console.log(newGame.currentPlayer.spaces);
-    // newGame.switchPlayer();
-  });
-
 });
