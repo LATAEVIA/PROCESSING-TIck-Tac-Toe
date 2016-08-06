@@ -20,3 +20,9 @@ Create a JavaScript class that, when instantiated, draws a playable tic-tac-toe 
     + Picks the "best" spot (whatever best means)
 - Add a _new game_ button that resets the board, allowing a fresh game to be played.
 - Keep track of wins and losses for both players, updating the counts whenever a game ends.
+
+## Known Bugs
+- The game currently stores player names and assigns an 'X' or "O', an array to store all moves, and a score to tally player score. 
+- Each square is assigned a number, and each winning combination will add up to an unique sum.
+- Functionality to tally sum of numbers assigned to each square chosen by each player is working.
+- Functionality to check if a player has won is not yet built.
